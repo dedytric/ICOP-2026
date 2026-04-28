@@ -199,25 +199,20 @@
                         <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Modeling</span>
                         <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Evaluation</span>
                     </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">Proxy dataset with <strong>extreme class imbalance</strong> (fraud ~0.5%). Four models tested:</p>
-                    <ul class="mt-3 space-y-2 text-sm">
-                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-blue-600 rounded-full"></div><span class="font-medium">Random Forest</span> (Ensemble)</li>
-                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-green-600 rounded-full"></div><span class="font-medium">XGBoost</span> (Gradient boosting)</li>
-                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-orange-600 rounded-full"></div><span class="font-medium">Isolation Forest</span> (Unsupervised)</li>
-                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-purple-600 rounded-full"></div><span class="font-medium">Autoencoder</span> (Neural anomaly)</li>
-                    </ul>
+                    <div class="grid md:grid-cols-2 gap-6 text-sm">
+                <div>
+                    <p><span class="font-bold">Dataset:</span> 284,807 rows, fraud prevalence 0.17%. Removed 1081 duplicates → 283,726 rows. Stratified 80:20 split.</p>
+                    <p class="mt-2"><span class="font-bold">Models:</span> Random Forest, XGBoost (supervised) — Isolation Forest, Autoencoder (unsupervised).</p>
+                    <p class="mt-2"><span class="font-bold">Threshold calibration:</span> RF threshold 0.527 (precision-priority), XGBoost 0.415 (recall-priority), IF & AE use 99th percentile anomaly score.</p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-xl">
-                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Validation Strategy</p>
-                    <p class="text-sm mt-1"><strong>Repeated Stratified Cross-Validation</strong> (10-fold, 5 repeats)</p>
-                    <div class="mt-4 h-px bg-gray-200 my-3"></div>
-                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Evaluation Metrics</p>
-                    <div class="grid grid-cols-2 gap-2 mt-1 text-sm">
-                        <span>• Precision</span> <span>• Recall</span>
-                        <span>• F1-Score</span> <span>• ROC-AUC</span>
-                    </div>
+                <div class="bg-gray-50 p-3 rounded-lg">
+                    <p class="font-semibold">Validation strategy:</p>
+                    <p>Repeated Stratified Cross-Validation (5 folds × 3 seeds = 15 runs per model)</p>
+                    <p class="mt-2">Metrics: Precision, Recall, F1, ROC-AUC, PR-AUC + pairwise Welch t-test.</p>
+                    <p class="mt-1 text-xs text-gray-500">Class‑weighting used for supervised models (rare class weight ~300).</p>
                 </div>
             </div>
+			</div>
         </div>
     </div>
 
