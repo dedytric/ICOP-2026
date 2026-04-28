@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Digital Waqf Fraud Detection - Full Screen Slides</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #eef2ff;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        /* Each slide is exactly viewport height & width, perfectly centered */
+        .slide {
+            scroll-snap-align: start;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: #f9fafb;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .slide-content {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        /* Main menu fixed on upper left corner */
+        .main-menu {
+            position: fixed;
+            top: 1.25rem;
+            left: 1.5rem;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 0.5rem 1.25rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.2s;
+        }
+        .main-menu a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0 0.75rem;
+            transition: color 0.2s;
+            font-family: 'Inter', monospace;
+        }
+        .main-menu a:hover {
+            color: #60a5fa;
+        }
+        .menu-icon {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: white;
+            margin-right: 0.75rem;
+            border-right: 1px solid #475569;
+            padding-right: 0.75rem;
+        }
+        @media (max-width: 700px) {
+            .main-menu { display: none; } /* on mobile, menu hidden but navigation via scroll still works */
+            .slide { padding: 1rem; }
+        }
+        .gradient-bg-custom {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .stat-number {
+            background: linear-gradient(120deg, #1e3a8a, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        /* ensure charts responsive */
+        canvas { max-height: 280px; width: 100% !important; }
+    </style>
+</head>
+<body>
+
+    <!-- MAIN MENU (fixed upper left) -->
+    <div class="main-menu">
+        <span class="menu-icon">📋 MENU</span>
+        <a href="#slide1">🏠 Home</a>
+        <a href="#slide2">🔎 Background</a>
+        <a href="#slide3">🎯 Gap</a>
+        <a href="#slide4">⚙️ Method</a>
+        <a href="#slide5">📊 Results</a>
+        <a href="#slide6">📈 Charts</a>
+        <a href="#slide7">🧩 Governance</a>
+        <a href="#slide8">✨ Conclusion</a>
+    </div>
+
+    <!-- SLIDE 1 - TITLE -->
+    <div id="slide1" class="slide">
+        <div class="slide-content">
+            <div class="gradient-bg-custom p-8 md:p-12 text-white">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+                    <div class="text-sm font-mono opacity-80 border border-white/30 rounded-full px-4 py-1">International Conference on Pesantren 2026</div>
+                    <div class="text-xs opacity-70">Jakarta, Indonesia • 2026</div>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">Enhancing Trust in Digital Waqf Platforms</h1>
+                <p class="text-xl md:text-2xl font-medium mt-4 text-blue-200">Machine Learning-Based Fraud Detection Framework</p>
+                <img src="logo ITBD.png" alt="Logo ITB Dewantara" class="w-36 float-left mr-4 mt-4 mb-8 drop-shadow-2xl rounded-xl bg-white p-3">
+		<div class="mt-8 pt-4 border-t border-white/30 flex flex-wrap gap-x-8 gap-y-2 text-sm md:text-base">
+                    <span>Harianto, Dedy Tri Cahyono, Reza Irsyadul, Mimin Rukmini, Didin Samsudin, Muchammad Hamdani</span>
+                </div>
+                <div class="mt-4 text-xl opacity-70">Institut Teknologi & Bisnis Dewantara, Bogor</div>
+            </div>
+            <div class="bg-white p-6 md:p-8 border-t border-gray-200 flex justify-between items-center">
+                <span class="text-sm text-gray-500">#DigitalWaqf #FraudDetection #MachineLearning</span>
+                <span class="text-sm font-medium text-blue-700">• Presented by @DedyTriCahyono</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2 - BACKGROUND -->
+    <div id="slide2" class="slide">
+        <div class="slide-content p-8 md:p-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center"><span class="text-xl">📊</span></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Background & Context</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-5 rounded-2xl border-l-8 border-blue-600">
+                        <span class="text-sm font-bold uppercase tracking-wide text-blue-800">Opportunity</span>
+                        <p class="text-gray-700 mt-1 leading-relaxed">Digital waqf platforms increase <span class="font-semibold">accessibility, transparency, and fundraising reach</span> for Islamic social finance.</p>
+                    </div>
+                    <div class="bg-red-50 p-5 rounded-2xl border-l-8 border-red-600">
+                        <span class="text-sm font-bold uppercase tracking-wide text-red-800">Threat</span>
+                        <p class="text-gray-700 mt-1 leading-relaxed">Risks of <span class="font-semibold">transaction fraud</span> (fake donations, misappropriation) directly reduce donor trust & long-term sustainability.</p>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-5 rounded-2xl flex flex-col justify-center">
+                    <p class="text-gray-600 italic">"Fraud not only causes financial loss but also destroys the <span class="font-bold text-gray-900">spiritual confidence</span> of waqf donors."</p>
+                    <div class="mt-4 text-sm font-medium text-gray-500">→ Urgent need for real-time, accurate detection system</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3 - RESEARCH GAP -->
+    <div id="slide3" class="slide">
+        <div class="slide-content p-8 md:p-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center"><span class="text-xl">🔍</span></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Research Gap & Problem Statement</h2>
+            </div>
+            <div class="bg-gradient-to-r from-purple-50 to-indigo-50 p-6 rounded-2xl mb-6">
+                <p class="text-lg font-semibold text-gray-800">Existing fraud detection in waqf is either:</p>
+                <ul class="mt-3 space-y-2 text-gray-700">
+                    <li class="flex items-start gap-2"><span class="text-purple-600 text-xl">✖</span> <span>Manual & rule-based → <strong>Low adaptability</strong> to new fraud patterns</span></li>
+                    <li class="flex items-start gap-2"><span class="text-purple-600 text-xl">✖</span> <span>Designed for banking/fintech → <strong>Not optimized for waqf transaction characteristics</strong></span></li>
+                    <li class="flex items-start gap-2"><span class="text-purple-600 text-xl">✖</span> <span>Ignoring <strong>extreme class imbalance</strong> (fraud cases << normal)</span></li>
+                </ul>
+            </div>
+            <div class="border-l-4 border-purple-700 bg-white p-5 rounded-r-2xl shadow-sm">
+                <p class="font-bold text-gray-800">🚩 This research addresses:</p>
+                <p class="text-gray-700 mt-1">ML-based fraud detection tailored for <span class="font-mono bg-gray-100 px-2 py-0.5 rounded">digital waqf</span> with extreme imbalance and hybrid governance.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4 - METHODOLOGY (CRISP-DM) -->
+    <div id="slide4" class="slide">
+        <div class="slide-content p-8 md:p-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center"><span class="text-xl">⚙️</span></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Methodology: CRISP-DM & ML Pipeline</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Business Understanding</span>
+                        <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Data Prep</span>
+                        <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Modeling</span>
+                        <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">Evaluation</span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed">Proxy dataset with <strong>extreme class imbalance</strong> (fraud ~0.5%). Four models tested:</p>
+                    <ul class="mt-3 space-y-2 text-sm">
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-blue-600 rounded-full"></div><span class="font-medium">Random Forest</span> (Ensemble)</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-green-600 rounded-full"></div><span class="font-medium">XGBoost</span> (Gradient boosting)</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-orange-600 rounded-full"></div><span class="font-medium">Isolation Forest</span> (Unsupervised)</li>
+                        <li class="flex items-center gap-2"><div class="w-2 h-2 bg-purple-600 rounded-full"></div><span class="font-medium">Autoencoder</span> (Neural anomaly)</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl">
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Validation Strategy</p>
+                    <p class="text-sm mt-1"><strong>Repeated Stratified Cross-Validation</strong> (10-fold, 5 repeats)</p>
+                    <div class="mt-4 h-px bg-gray-200 my-3"></div>
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Evaluation Metrics</p>
+                    <div class="grid grid-cols-2 gap-2 mt-1 text-sm">
+                        <span>• Precision</span> <span>• Recall</span>
+                        <span>• F1-Score</span> <span>• ROC-AUC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5 - RESULTS TABLE -->
+    <div id="slide5" class="slide">
+        <div class="slide-content p-8 md:p-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center"><span class="text-xl">📈</span></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Analysis: Model Performance</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 rounded-xl shadow-sm">
+                    <thead class="bg-gray-100">
+                        <tr><th class="px-5 py-3 text-left text-sm font-bold text-gray-700">Model</th><th class="px-5 py-3 text-left text-sm font-bold text-gray-700">Precision</th><th class="px-5 py-3 text-left text-sm font-bold text-gray-700">Recall</th><th class="px-5 py-3 text-left text-sm font-bold text-gray-700">F1-Score</th><th class="px-5 py-3 text-left text-sm font-bold text-gray-700">ROC-AUC</th></tr>
+                    </thead>
+                    <tbody class="divide-y">
+                        <tr class="hover:bg-gray-50"><td class="px-5 py-3 font-medium">XGBoost</td><td class="px-5 py-3">0.846153</td><td class="px-5 py-3">0.885057</td><td class="px-5 py-3 font-bold text-green-700">0.865169 🏆</td><td class="px-5 py-3 font-bold text-blue-700">0.975017 🏆</td></tr>
+                        <tr class="hover:bg-gray-50"><td class="px-5 py-3 font-medium">Random Forest</td><td class="px-5 py-3 font-bold text-indigo-700">0.985507</td><td class="px-5 py-3">0.770115</td><td class="px-5 py-3">0.864242</td><td class="px-5 py-3">0.959634</td></tr>
+                        <tr class="hover:bg-gray-50"><td class="px-5 py-3 font-medium">Isolation Forest</td><td class="px-5 py-3">0.023802</td><td class="px-5 py-3">0.605117</td><td class="px-5 py-3">0.045795</td><td class="px-5 py-3">0.521188</td></tr>
+                        <tr class="hover:bg-gray-50"><td class="px-5 py-3 font-medium">Autoencoder</td><td class="px-5 py-3">0.090361</td><td class="px-5 py-3">0.748361</td><td class="px-5 py-3">0.161152</td><td class="px-5 py-3">0.743289</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-6 grid md:grid-cols-3 gap-4 text-center text-sm">
+                <div class="bg-blue-50 p-3 rounded-xl"><span class="font-bold">🔹 XGBoost</span><br>Best overall F1 & AUC</div>
+                <div class="bg-indigo-50 p-3 rounded-xl"><span class="font-bold">🔸 Random Forest</span><br>Highest precision (98.5%)<br><span class="text-xs">Minimal false positives</span></div>
+                <div class="bg-gray-100 p-3 rounded-xl"><span class="font-bold">📊 Statistical test</span><br>XGBoost vs RF = no significant difference, both >> unsupervised</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6 - CHARTS ROC & F1 -->
+    <div id="slide6" class="slide">
+        <div class="slide-content p-8 md:p-10">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center"><span class="text-xl">📊</span></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Visual Insight: ROC-AUC & F1 Comparison</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <canvas id="rocAucChartMain" width="500" height="280" style="max-height: 260px;"></canvas>
+                    <p class="text-center text-xs text-gray-500 mt-2">ROC-AUC: XGBoost near-perfect discrimination</p>
+                </div>
+                <div>
+                    <canvas id="f1ChartMain" width="500" height="280" style="max-height: 260px;"></canvas>
+                    <p class="text-center text-xs text-gray-500 mt-2">F1-Score: Supervised models outperform anomaly detectors</p>
+                </div>
+            </div>
+            <div class="mt-4 text-center text-xs text-gray-500 bg-gray-50 p-2 rounded-lg">Extreme class imbalance handled via repeated stratified CV</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7 - LAYERED GOVERNANCE RECOMMENDATION -->
+    <div id="slide7" class="slide">
+        <div class="slide-content p-8 md:p-10">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-rose-100 rounded-xl flex items-center justify-center"><span class="text-xl">🎯</span></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Recommendation: Layered Governance Model</h2>
+            </div>
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 rounded-2xl shadow-xl">
+                <div class="flex flex-col md:flex-row justify-around gap-4 text-center">
+                    <div class="bg-blue-900/60 p-4 rounded-xl flex-1"><span class="text-2xl">🔍</span><h3 class="font-bold text-lg mt-2">Layer 1</h3><p class="text-sm">Supervised Models (XGBoost / RF)<br><span class="text-blue-300">Primary real-time fraud filter</span></p></div>
+                    <div class="text-3xl font-light self-center">→</div>
+                    <div class="bg-purple-900/60 p-4 rounded-xl flex-1"><span class="text-2xl">⚠️</span><h3 class="font-bold text-lg mt-2">Layer 2</h3><p class="text-sm">Anomaly Detection (AE / IForest)<br><span class="text-purple-300">Secondary surveillance for novel fraud</span></p></div>
+                    <div class="text-3xl font-light self-center">→</div>
+                    <div class="bg-emerald-900/60 p-4 rounded-xl flex-1"><span class="text-2xl">✅</span><h3 class="font-bold text-lg mt-2">Layer 3</h3><p class="text-sm">Human-in-the-loop<br><span class="text-emerald-300">Expert validation & shariah compliance</span></p></div>
+                </div>
+            </div>
+            <div class="mt-6 p-4 bg-gray-100 rounded-xl">
+                <p class="text-gray-800"><span class="font-bold">📌 Practical Implementation:</span> Random Forest for high-precision alerts (avoid donor harassment), XGBoost for overall balance, periodic retraining on new waqf transactions.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8 - CONCLUSION & FUTURE -->
+    <div id="slide8" class="slide">
+        <div class="slide-content p-8 md:p-10">
+            <div class="flex items-center gap-3 mb-5">
+                <div class="w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center"><span class="text-xl">✨</span></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-800">Conclusion & Future Directions</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="border-l-4 border-teal-600 bg-teal-50 p-5 rounded-r-2xl">
+                    <p class="font-semibold text-gray-800">📌 <span class="text-teal-800">ML-based fraud detection is viable & effective for digital waqf</span> – achieving 97.5% AUC despite extreme imbalance.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-white shadow-md p-4 rounded-xl"><span class="font-bold">🏆 Main takeaway</span><p class="text-sm text-gray-600 mt-1">XGBoost and Random Forest deliver robust, stable performance → increase donor trust & platform credibility.</p></div>
+                    <div class="bg-white shadow-md p-4 rounded-xl"><span class="font-bold">🔬 Future work</span><p class="text-sm text-gray-600 mt-1">Real-world waqf transaction data, explainable AI (XAI) for shariah audit, and federated learning across platforms.</p></div>
+                </div>
+                <div class="text-center text-xs text-gray-400 pt-4 border-t">Presented at International Conference on Pesantren (ICOP) 2026 | Corresponding: dedy.tricahyono@yahoo.com</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart rendering with robust IDs
+        function renderCharts() {
+            const rocCanvas = document.getElementById('rocAucChartMain');
+            const f1Canvas = document.getElementById('f1ChartMain');
+            if (rocCanvas && f1Canvas) {
+                new Chart(rocCanvas, {
+                    type: 'bar',
+                    data: {
+                        labels: ['XGBoost', 'Random Forest', 'Isolation Forest', 'Autoencoder'],
+                        datasets: [{ label: 'ROC-AUC Score', data: [0.975017, 0.959634, 0.521188, 0.743289], backgroundColor: ['#3b82f6', '#6366f1', '#f97316', '#8b5cf6'], borderRadius: 8 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, scales: { y: { max: 1, title: { display: true, text: 'Score' } } } }
+                });
+                new Chart(f1Canvas, {
+                    type: 'bar',
+                    data: {
+                        labels: ['XGBoost', 'Random Forest', 'Isolation Forest', 'Autoencoder'],
+                        datasets: [{ label: 'F1-Score', data: [0.865169, 0.864242, 0.045795, 0.161152], backgroundColor: ['#10b981', '#34d399', '#f59e0b', '#a78bfa'], borderRadius: 8 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: true, scales: { y: { max: 1, title: { display: true, text: 'F1-Score' } } } }
+                });
+            }
+        }
+        window.addEventListener('load', renderCharts);
+    </script>
+    <div style="text-align: center; font-size: 12px; color: #94a3b8; padding: 16px; background: #f1f5f9;">⬆️ Use main menu (upper left) to navigate slides • Scroll snap — each slide fits one screen • Designed for international conference</div>
+</body>
+</html>
